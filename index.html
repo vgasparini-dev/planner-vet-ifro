@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Planner Veterinária - IFRO Jaru</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -10,55 +10,82 @@ body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-heig
 .app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
 .sidebar{background:#1a1f2e;border-right:1px solid #2d3748;padding:20px;position:sticky;top:0;height:100vh;overflow-y:auto}
 .logo{font-size:1.3rem;font-weight:700;color:#60a5fa;margin-bottom:4px}
-.logo-sub{font-size:0.8rem;color:#718096;margin-bottom:24px}
-.nav-btn{display:block;width:100%;text-align:left;padding:10px 14px;border:none;background:transparent;color:#a0aec0;border-radius:8px;cursor:pointer;margin-bottom:4px;font-size:0.9rem;transition:all .2s}
+.logo-sub{font-size:0.78rem;color:#718096;margin-bottom:20px;line-height:1.4}
+.nav-btn{display:block;width:100%;text-align:left;padding:10px 14px;border:none;background:transparent;color:#a0aec0;border-radius:8px;cursor:pointer;margin-bottom:4px;font-size:0.88rem;transition:all .2s}
 .nav-btn:hover{background:#2d3748;color:#e2e8f0}
 .nav-btn.active{background:#2b4c8c;color:#60a5fa;font-weight:600}
-.edit-toggle{display:block;width:100%;padding:10px 14px;border:1px solid #3182ce;background:transparent;color:#60a5fa;border-radius:8px;cursor:pointer;margin-bottom:8px;font-size:0.85rem}
+.edit-toggle{display:block;width:100%;padding:9px 14px;border:1px solid #3182ce;background:transparent;color:#60a5fa;border-radius:8px;cursor:pointer;margin-bottom:8px;font-size:0.82rem}
 .edit-toggle.on{background:#2b4c8c}
-.theme-btn{display:block;width:100%;padding:8px 14px;border:1px solid #2d3748;background:transparent;color:#a0aec0;border-radius:8px;cursor:pointer;margin-bottom:16px;font-size:0.85rem}
+.theme-btn{display:block;width:100%;padding:8px 14px;border:1px solid #2d3748;background:transparent;color:#a0aec0;border-radius:8px;cursor:pointer;margin-bottom:16px;font-size:0.82rem}
 .main{padding:28px;overflow-y:auto}
 .section{display:none}
 .section.active{display:block}
-.page-title{font-size:1.6rem;font-weight:700;color:#e2e8f0;margin-bottom:6px}
-.page-sub{color:#718096;margin-bottom:24px;font-size:0.9rem}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px}
-.card{background:#1a1f2e;border-radius:10px;padding:18px;border-left:3px solid #3182ce}
+.page-title{font-size:1.5rem;font-weight:700;color:#e2e8f0;margin-bottom:4px}
+.page-sub{color:#718096;margin-bottom:22px;font-size:0.88rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:22px}
+.card{background:#1a1f2e;border-radius:10px;padding:16px;border-left:3px solid #3182ce}
 .card.green{border-color:#48bb78}.card.yellow{border-color:#ed8936}.card.red{border-color:#fc8181}
-.card h4{font-size:0.8rem;color:#718096;margin-bottom:6px;text-transform:uppercase}
+.card h4{font-size:0.75rem;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
 .card p{font-size:1.4rem;font-weight:700;color:#60a5fa}
 .card.green p{color:#48bb78}.card.yellow p{color:#ed8936}.card.red p{color:#fc8181}
-.panel{background:#1a1f2e;border-radius:10px;padding:20px;margin-bottom:20px}
-.panel h3{font-size:1rem;font-weight:600;color:#60a5fa;margin-bottom:14px;border-bottom:1px solid #2d3748;padding-bottom:8px}
+.panel{background:#1a1f2e;border-radius:10px;padding:20px;margin-bottom:18px}
+.panel h3{font-size:0.95rem;font-weight:600;color:#60a5fa;margin-bottom:14px;border-bottom:1px solid #2d3748;padding-bottom:8px}
 .table{width:100%;border-collapse:collapse}
-.table th{background:#162032;color:#718096;font-size:0.78rem;text-transform:uppercase;padding:10px;text-align:left}
-.table td{padding:10px;border-bottom:1px solid #1e2a3a;font-size:0.88rem;vertical-align:top}
+.table th{background:#162032;color:#718096;font-size:0.75rem;text-transform:uppercase;padding:9px;text-align:left;letter-spacing:.4px}
+.table td{padding:9px;border-bottom:1px solid #1e2a3a;font-size:0.85rem;vertical-align:top}
+.table tr:last-child td{border-bottom:none}
 .table tr:hover td{background:#1e2a3a}
-.badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:0.75rem;background:#2b4c8c;color:#60a5fa}
+.badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:0.72rem;background:#2b4c8c;color:#60a5fa;white-space:nowrap}
 .badge.green{background:#1a3a2a;color:#48bb78}
 .badge.yellow{background:#3a2a0a;color:#ed8936}
 .badge.red{background:#3a1a1a;color:#fc8181}
-.event-item{padding:10px 0;border-bottom:1px solid #2d3748;display:flex;gap:12px;align-items:flex-start}
-.event-date{background:#162032;border-radius:6px;padding:4px 10px;font-size:0.78rem;color:#60a5fa;white-space:nowrap}
+.badge.gray{background:#2d3748;color:#a0aec0}
+.event-item{padding:9px 0;border-bottom:1px solid #2d3748;display:flex;gap:12px;align-items:flex-start}
+.event-item:last-child{border-bottom:none}
+.event-date{background:#162032;border-radius:6px;padding:3px 9px;font-size:0.75rem;color:#60a5fa;white-space:nowrap;flex-shrink:0}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
 .form-group{display:flex;flex-direction:column;gap:4px}
-.form-group label{font-size:0.8rem;color:#718096}
-.form-group input,.form-group select,.form-group textarea{background:#162032;border:1px solid #2d3748;color:#e2e8f0;border-radius:6px;padding:8px 10px;font-size:0.88rem}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#3182ce}
-.btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:0.88rem;font-weight:600;transition:all .2s}
+.form-group label{font-size:0.78rem;color:#718096}
+.form-group input,.form-group select,.form-group textarea{background:#162032;border:1px solid #2d3748;color:#e2e8f0;border-radius:6px;padding:8px 10px;font-size:0.85rem;font-family:inherit}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:#3182ce}
+.btn{padding:9px 18px;border-radius:8px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;transition:all .2s}
 .btn-primary{background:#3182ce;color:#fff}.btn-primary:hover{background:#2b6cb0}
-.btn-danger{background:#c53030;color:#fff;padding:4px 10px;font-size:0.78rem;border-radius:6px;border:none;cursor:pointer}
-.editable{cursor:text;border-radius:4px;padding:2px 4px}
-.editable:hover{background:#1e2a3a}
+.btn-danger{background:#c53030;color:#fff;padding:4px 10px;font-size:0.75rem;border-radius:6px;border:none;cursor:pointer}
 [contenteditable=true]{outline:2px solid #3182ce;border-radius:4px;padding:2px 4px;background:#162032}
-.grade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.disc-card{background:#1a1f2e;border-radius:10px;padding:16px;border-top:3px solid #3182ce}
-.disc-card h4{font-size:0.95rem;font-weight:600;color:#e2e8f0;margin-bottom:8px}
-.disc-card p{font-size:0.82rem;color:#718096;margin-bottom:4px}
-.agenda-list .agenda-item{background:#1a1f2e;border-radius:8px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.agenda-item-info h4{font-size:0.9rem;font-weight:600;color:#e2e8f0}
-.agenda-item-info p{font-size:0.8rem;color:#718096}
-@media(max-width:768px){.app{grid-template-columns:1fr}.sidebar{height:auto;position:relative}.form-row{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
+.agenda-item{background:#162032;border-radius:8px;padding:12px 16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.agenda-item h4{font-size:0.88rem;font-weight:600;color:#e2e8f0}
+.agenda-item p{font-size:0.78rem;color:#718096;margin-top:2px}
+/* CALENDARIO ANUAL */
+.cal-year{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.cal-month{background:#162032;border-radius:10px;padding:14px}
+.cal-month-title{font-size:0.82rem;font-weight:700;color:#60a5fa;text-align:center;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-dow{font-size:0.65rem;color:#718096;text-align:center;padding:2px;font-weight:600}
+.cal-day{font-size:0.7rem;text-align:center;padding:3px 2px;border-radius:4px;cursor:default;line-height:1.2}
+.cal-day.empty{background:transparent}
+.cal-day.today{background:#3182ce;color:#fff;font-weight:700;border-radius:50%}
+.cal-day.evento{background:#2b4c8c;color:#90cdf4;border-radius:4px}
+.cal-day.feriado{background:#3a1a1a;color:#fc8181;border-radius:4px}
+.cal-day.recesso{background:#3a2a0a;color:#ed8936;border-radius:4px}
+.cal-day.letivo{background:#1a3a2a;color:#68d391;border-radius:4px}
+.cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.cal-legend-item{display:flex;align-items:center;gap:6px;font-size:0.78rem;color:#a0aec0}
+.cal-legend-dot{width:12px;height:12px;border-radius:3px}
+/* DISCIPLINAS POR DIA */
+.dias-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.dia-card{background:#162032;border-radius:10px;overflow:hidden}
+.dia-header{padding:10px 14px;font-size:0.88rem;font-weight:700;letter-spacing:.3px}
+.dia-header.seg{background:#1e3a5f;color:#63b3ed}
+.dia-header.ter{background:#1a3a2a;color:#68d391}
+.dia-header.qua{background:#3a1f2a;color:#f687b3}
+.dia-header.qui{background:#2a1f3a;color:#b794f4}
+.dia-header.sex{background:#3a2a0a;color:#f6ad55}
+.dia-aula{padding:10px 14px;border-bottom:1px solid #1e2a3a;font-size:0.82rem}
+.dia-aula:last-child{border-bottom:none}
+.dia-aula .horario{font-size:0.72rem;color:#718096;margin-bottom:2px}
+.dia-aula .nome{color:#e2e8f0;font-weight:500}
+@media(max-width:900px){.cal-year{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.app{grid-template-columns:1fr}.sidebar{height:auto;position:relative}.cal-year{grid-template-columns:repeat(2,1fr)}.form-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -80,72 +107,49 @@ body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-heig
 <main class="main">
 <section id="dashboard" class="section active">
 <h1 class="page-title" id="tituloApp">Medicina Veterinária &middot; IFRO Jaru</h1>
-<p class="page-sub">5&ordm; Per&iacute;odo &middot; 2026 &middot; Campus Jaru</p>
+<p class="page-sub" id="subApp">5º Período &middot; 2026 &middot; Campus Jaru</p>
 <div class="cards">
 <div class="card"><h4>Disciplinas</h4><p>10</p></div>
-<div class="card green"><h4>1&ordm; Semestre fim</h4><p>20/06</p></div>
-<div class="card yellow"><h4>Pr&oacute;x. Evento</h4><p>SIMVET</p></div>
-<div class="card red"><h4>Pend&ecirc;ncias</h4><p id="pendencias">0</p></div>
+<div class="card green"><h4>Fim 1º Sem.</h4><p>20/06</p></div>
+<div class="card yellow"><h4>Próx. Evento</h4><p>SIMVET</p></div>
+<div class="card red"><h4>Pendências</h4><p id="pendencias">0</p></div>
 </div>
 <div class="panel">
-<h3>Pr&oacute;ximas datas importantes</h3>
-<div class="event-item"><span class="event-date">09/02/2026</span><span>In&iacute;cio do 1&ordm; Semestre letivo</span></div>
-<div class="event-item"><span class="event-date">20/06/2026</span><span>Conclus&atilde;o do 1&ordm; Semestre letivo</span></div>
-<div class="event-item"><span class="event-date">20/07/2026</span><span>In&iacute;cio do 2&ordm; Semestre letivo</span></div>
-<div class="event-item"><span class="event-date">29/08/2026</span><span>Cola&ccedil;&atilde;o de Grau - Medicina Veterin&aacute;ria</span></div>
-<div class="event-item"><span class="event-date">09/09/2026</span><span>VIII SIMVET &amp; Dia do M&eacute;dico Veterin&aacute;rio</span></div>
-<div id="eventosExtra"></div>
+<h3>Próximas datas importantes</h3>
+<div class="event-item"><span class="event-date">09/02/2026</span><span>Início do 1º Semestre letivo</span></div>
+<div class="event-item"><span class="event-date">20/06/2026</span><span>Conclusão do 1º Semestre letivo</span></div>
+<div class="event-item"><span class="event-date">20/07/2026</span><span>Início do 2º Semestre letivo</span></div>
+<div class="event-item"><span class="event-date">29/08/2026</span><span>Colação de Grau &mdash; Medicina Veterinária</span></div>
+<div class="event-item"><span class="event-date">09/09/2026</span><span>VIII SIMVET &amp; Dia do Médico Veterinário</span></div>
 </div>
 <div class="panel">
-<h3>Resumo das disciplinas do 5&ordm; per&iacute;odo</h3>
+<h3>Disciplinas &mdash; 5º Período</h3>
 <table class="table">
 <thead><tr><th>Disciplina</th><th>CH</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td>Anestesiologia Veterin&aacute;ria</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-<tr><td>Toxicologia Veterin&aacute;ria e de Plantas</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-<tr><td>Diagn&oacute;stico por Imagem</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-<tr><td>Suinocultura e Sanidade de Su&iacute;nos</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-<tr><td>Doen&ccedil;as Parasit&aacute;rias</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-<tr><td>Patologia Especial Veterin&aacute;ria</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-<tr><td>Terap&ecirc;utica Veterin&aacute;ria</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
+<tr><td>Anestesiologia Veterinária</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
+<tr><td>Toxicologia Veterinária e de Plantas</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
+<tr><td>Diagnóstico por Imagem</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
+<tr><td>Suinocultura e Sanidade de Suínos</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
+<tr><td>Doenças Parasitárias</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
+<tr><td>Patologia Especial Veterinária</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
+<tr><td>Terapêutica Veterinária</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
 <tr><td>Tecnologia de Produtos de Origem Animal</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-<tr><td>Pr&aacute;ticas Extensionistas IV</td><td>40h</td><td><span class="badge yellow">Em andamento</span></td></tr>
+<tr><td>Práticas Extensionistas IV</td><td>40h</td><td><span class="badge yellow">Em andamento</span></td></tr>
 <tr><td>Bovinocultura de Leite</td><td>60h</td><td><span class="badge green">Em andamento</span></td></tr>
-</tbody>
-</table>
-</div>
+</tbody></table></div>
 </section>
 <section id="calendario" class="section">
-<h1 class="page-title">Calendário Acadêmico 2026</h1>
+<h1 class="page-title">Calendário Anual 2026</h1>
 <p class="page-sub">IFRO Campus Jaru &middot; Medicina Veterinária</p>
-<div class="panel">
-<h3>1º Semestre 2026</h3>
-<table class="table">
-<thead><tr><th>Data</th><th>Evento</th><th>Tipo</th></tr></thead>
-<tbody>
-<tr><td>09/02/2026</td><td>Início do 1º Semestre letivo</td><td><span class="badge green">Letivo</span></td></tr>
-<tr><td>19/02/2026</td><td>Férias Escolares (antecipadas)</td><td><span class="badge yellow">Recesso</span></td></tr>
-<tr><td>04/03/2026</td><td>Retorno das aulas</td><td><span class="badge green">Letivo</span></td></tr>
-<tr><td>03/04/2026</td><td>Páscoa - Feriado Nacional</td><td><span class="badge red">Feriado</span></td></tr>
-<tr><td>21/04/2026</td><td>Tiradentes - Feriado Nacional</td><td><span class="badge red">Feriado</span></td></tr>
-<tr><td>01/05/2026</td><td>Dia do Trabalho - Feriado Nacional</td><td><span class="badge red">Feriado</span></td></tr>
-<tr><td>05/06/2026</td><td>Corpus Christi - Ponto Facultativo</td><td><span class="badge yellow">Facultativo</span></td></tr>
-<tr><td>20/06/2026</td><td>Conclusão do 1º Semestre letivo</td><td><span class="badge">Fim semestre</span></td></tr>
-</tbody></table></div>
-<div class="panel">
-<h3>2º Semestre 2026</h3>
-<table class="table">
-<thead><tr><th>Data</th><th>Evento</th><th>Tipo</th></tr></thead>
-<tbody>
-<tr><td>20/07/2026</td><td>Início do 2º Semestre letivo</td><td><span class="badge green">Letivo</span></td></tr>
-<tr><td>29/08/2026</td><td>Colação de Grau - Medicina Veterinária</td><td><span class="badge green">Evento</span></td></tr>
-<tr><td>07/09/2026</td><td>Independência do Brasil - Feriado</td><td><span class="badge red">Feriado</span></td></tr>
-<tr><td>09/09/2026</td><td>VIII SIMVET &amp; Dia do Médico Veterinário</td><td><span class="badge yellow">Evento</span></td></tr>
-<tr><td>12/10/2026</td><td>Nossa Sra. Aparecida - Feriado</td><td><span class="badge red">Feriado</span></td></tr>
-<tr><td>02/11/2026</td><td>Finados - Feriado Nacional</td><td><span class="badge red">Feriado</span></td></tr>
-<tr><td>15/11/2026</td><td>Proclamação da República - Feriado</td><td><span class="badge red">Feriado</span></td></tr>
-<tr><td>05/12/2026</td><td>Conclusão do 2º Semestre letivo</td><td><span class="badge">Fim semestre</span></td></tr>
-</tbody></table></div>
+<div class="cal-legend">
+<div class="cal-legend-item"><div class="cal-legend-dot" style="background:#1a3a2a"></div>Início/Fim letivo</div>
+<div class="cal-legend-item"><div class="cal-legend-dot" style="background:#3a1a1a"></div>Feriado</div>
+<div class="cal-legend-item"><div class="cal-legend-dot" style="background:#3a2a0a"></div>Recesso/Facultativo</div>
+<div class="cal-legend-item"><div class="cal-legend-dot" style="background:#2b4c8c"></div>Evento acadêmico</div>
+<div class="cal-legend-item"><div class="cal-legend-dot" style="background:#3182ce"></div>Hoje</div>
+</div>
+<div class="cal-year" id="calAnual"></div>
 </section>
 <section id="grade" class="section">
 <h1 class="page-title">Grade do 5º Período</h1>
@@ -155,26 +159,51 @@ body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-heig
 <table class="table">
 <thead><tr><th>Horário</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th></tr></thead>
 <tbody>
-<tr><td>07:30-09:10</td><td>Anestesiologia Vet.</td><td>Toxicologia Vet.</td><td>Diagn. por Imagem</td><td>Suinocultura</td><td>Doenças Parasitárias</td></tr>
-<tr><td>09:10-10:50</td><td>Patologia Especial</td><td>Terapêutica Vet.</td><td>Tecnol. Prod. Animal</td><td>Prát. Extensionistas</td><td>Bovinocultura Leite</td></tr>
-<tr><td>13:30-15:10</td><td>Anestesiologia Vet.</td><td>Toxicologia Vet.</td><td>Diagn. por Imagem</td><td>Suinocultura</td><td>Doenças Parasitárias</td></tr>
-<tr><td>15:10-16:50</td><td>Patologia Especial</td><td>Terapêutica Vet.</td><td>Tecnol. Prod. Animal</td><td>Prát. Extensionistas</td><td>Bovinocultura Leite</td></tr>
+<tr><td>07:30&ndash;09:10</td><td>Anestesiologia Vet.</td><td>Toxicologia Vet.</td><td>Diagn. por Imagem</td><td>Suinocultura</td><td>Doenças Parasitárias</td></tr>
+<tr><td>09:10&ndash;10:50</td><td>Patologia Especial</td><td>Terapêutica Vet.</td><td>Tecnol. Prod. Animal</td><td>Prát. Extensionistas</td><td>Bovinocultura Leite</td></tr>
+<tr><td>13:30&ndash;15:10</td><td>Anestesiologia Vet.</td><td>Toxicologia Vet.</td><td>Diagn. por Imagem</td><td>Suinocultura</td><td>Doenças Parasitárias</td></tr>
+<tr><td>15:10&ndash;16:50</td><td>Patologia Especial</td><td>Terapêutica Vet.</td><td>Tecnol. Prod. Animal</td><td>Prát. Extensionistas</td><td>Bovinocultura Leite</td></tr>
 </tbody></table></div>
 </section>
 <section id="disciplinas" class="section">
-<h1 class="page-title">Disciplinas</h1>
-<p class="page-sub">5º Período &middot; Medicina Veterinária &middot; IFRO Jaru</p>
-<div class="grade-grid">
-<div class="disc-card"><h4>Anestesiologia Veterinária</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Toxicologia Veterinária e de Plantas</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Diagnóstico por Imagem</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Suinocultura e Sanidade de Suínos</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Doenças Parasitárias</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Patologia Especial Veterinária</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Terapêutica Veterinária</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Tecnologia de Produtos de Origem Animal</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Práticas Extensionistas IV</h4><p>Carga horária: 40h</p><p>Período: 1º Semestre 2026</p></div>
-<div class="disc-card"><h4>Bovinocultura de Leite</h4><p>Carga horária: 60h</p><p>Período: 1º Semestre 2026</p></div>
+<h1 class="page-title">Disciplinas por Dia</h1>
+<p class="page-sub">5º Período &middot; Organização semanal &middot; IFRO Jaru 2026</p>
+<div class="dias-grid">
+<div class="dia-card">
+<div class="dia-header seg">&#128197; Segunda-feira</div>
+<div class="dia-aula"><div class="horario">07:30 &ndash; 09:10</div><div class="nome">Anestesiologia Veterinária</div></div>
+<div class="dia-aula"><div class="horario">09:10 &ndash; 10:50</div><div class="nome">Patologia Especial Veterinária</div></div>
+<div class="dia-aula"><div class="horario">13:30 &ndash; 15:10</div><div class="nome">Anestesiologia Veterinária</div></div>
+<div class="dia-aula"><div class="horario">15:10 &ndash; 16:50</div><div class="nome">Patologia Especial Veterinária</div></div>
+</div>
+<div class="dia-card">
+<div class="dia-header ter">&#128197; Terça-feira</div>
+<div class="dia-aula"><div class="horario">07:30 &ndash; 09:10</div><div class="nome">Toxicologia Veterinária e de Plantas</div></div>
+<div class="dia-aula"><div class="horario">09:10 &ndash; 10:50</div><div class="nome">Terapêutica Veterinária</div></div>
+<div class="dia-aula"><div class="horario">13:30 &ndash; 15:10</div><div class="nome">Toxicologia Veterinária e de Plantas</div></div>
+<div class="dia-aula"><div class="horario">15:10 &ndash; 16:50</div><div class="nome">Terapêutica Veterinária</div></div>
+</div>
+<div class="dia-card">
+<div class="dia-header qua">&#128197; Quarta-feira</div>
+<div class="dia-aula"><div class="horario">07:30 &ndash; 09:10</div><div class="nome">Diagnóstico por Imagem</div></div>
+<div class="dia-aula"><div class="horario">09:10 &ndash; 10:50</div><div class="nome">Tecnologia de Produtos de Origem Animal</div></div>
+<div class="dia-aula"><div class="horario">13:30 &ndash; 15:10</div><div class="nome">Diagnóstico por Imagem</div></div>
+<div class="dia-aula"><div class="horario">15:10 &ndash; 16:50</div><div class="nome">Tecnologia de Produtos de Origem Animal</div></div>
+</div>
+<div class="dia-card">
+<div class="dia-header qui">&#128197; Quinta-feira</div>
+<div class="dia-aula"><div class="horario">07:30 &ndash; 09:10</div><div class="nome">Suinocultura e Sanidade de Suínos</div></div>
+<div class="dia-aula"><div class="horario">09:10 &ndash; 10:50</div><div class="nome">Práticas Extensionistas IV</div></div>
+<div class="dia-aula"><div class="horario">13:30 &ndash; 15:10</div><div class="nome">Suinocultura e Sanidade de Suínos</div></div>
+<div class="dia-aula"><div class="horario">15:10 &ndash; 16:50</div><div class="nome">Práticas Extensionistas IV</div></div>
+</div>
+<div class="dia-card">
+<div class="dia-header sex">&#128197; Sexta-feira</div>
+<div class="dia-aula"><div class="horario">07:30 &ndash; 09:10</div><div class="nome">Doenças Parasitárias</div></div>
+<div class="dia-aula"><div class="horario">09:10 &ndash; 10:50</div><div class="nome">Bovinocultura de Leite</div></div>
+<div class="dia-aula"><div class="horario">13:30 &ndash; 15:10</div><div class="nome">Doenças Parasitárias</div></div>
+<div class="dia-aula"><div class="horario">15:10 &ndash; 16:50</div><div class="nome">Bovinocultura de Leite</div></div>
+</div>
 </div>
 </section>
 <section id="agenda" class="section">
@@ -189,45 +218,93 @@ body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-heig
 <div class="form-row">
 <div class="form-group"><label>Disciplina</label><input type="text" id="ev-disc" placeholder="Ex: Anestesiologia Veterinária"></div>
 <div class="form-group"><label>Tipo</label>
-<select id="ev-tipo"><option>Prova</option><option>Trabalho</option><option>Estágio</option><option>Evento</option><option>Outro</option></select>
-</div>
+<select id="ev-tipo"><option>Prova</option><option>Trabalho</option><option>Estágio</option><option>Evento</option><option>Outro</option></select></div>
 </div>
 <button class="btn btn-primary" onclick="addEvento()">+ Adicionar evento</button>
 </div>
-<div class="panel">
-<h3>Eventos cadastrados</h3>
-<div class="agenda-list" id="agendaLista"><p style="color:#718096">Nenhum evento cadastrado ainda.</p></div>
-</div>
+<div class="panel"><h3>Eventos cadastrados</h3><div id="agendaLista"><p style="color:#718096">Nenhum evento ainda.</p></div></div>
 </section>
 <section id="editar" class="section">
 <h1 class="page-title">Editar conteúdo</h1>
-<p class="page-sub">Personalize todas as informações do seu planner</p>
+<p class="page-sub">Personalize todas as informações do planner</p>
 <div class="panel">
 <h3>Informações gerais</h3>
 <div class="form-row">
 <div class="form-group"><label>Título principal</label><input type="text" id="ed-titulo" value="Medicina Veterinária · IFRO Jaru"></div>
-<div class="form-group"><label>Período / Subtitulo</label><input type="text" id="ed-sub" value="5º Período · 2026 · Campus Jaru"></div>
+<div class="form-group"><label>Subtítulo</label><input type="text" id="ed-sub" value="5º Período · 2026 · Campus Jaru"></div>
 </div>
 <div class="form-row">
-<div class="form-group"><label>Nome na sidebar</label><input type="text" id="ed-logo" value="Planner Vet IFRO"></div>
-<div class="form-group"><label>Subtitulo sidebar</label><input type="text" id="ed-logosub" value="Campus Jaru · 5º Período · 2026"></div>
+<div class="form-group"><label>Nome sidebar</label><input type="text" id="ed-logo" value="Planner Vet IFRO"></div>
+<div class="form-group"><label>Subtítulo sidebar</label><input type="text" id="ed-logosub" value="Campus Jaru · 5º Período · 2026"></div>
 </div>
 <button class="btn btn-primary" onclick="aplicarEdicao()">Aplicar alterações</button>
 </div>
-<div class="panel">
-<h3>Exportar / Importar dados</h3>
+<div class="panel"><h3>Exportar / Importar</h3>
 <div style="display:flex;gap:12px;flex-wrap:wrap">
 <button class="btn btn-primary" onclick="exportarJSON()">Exportar JSON</button>
-<button class="btn" style="background:#2d3748;color:#e2e8f0" onclick="document.getElementById('importFile').click()">Importar JSON</button>
-<input type="file" id="importFile" accept=".json" style="display:none" onchange="importarJSON(event)">
-</div>
-</div>
+<button class="btn" style="background:#2d3748;color:#e2e8f0" onclick="document.getElementById('impFile').click()">Importar JSON</button>
+<input type="file" id="impFile" accept=".json" style="display:none" onchange="importarJSON(event)">
+</div></div>
 </section>
-</main>
-</div>
+</main></div>
 <script>
-var editMode=false;
-var eventos=[];
+var editMode=false,eventos=[];
+var MESES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+var DOWS=['D','S','T','Q','Q','S','S'];
+// datas especiais 2026: chave YYYY-M-D (mes 0-indexado)
+var ESPECIAIS={
+'2026-1-9':{c:'letivo',t:'Início 1º Sem.'},
+'2026-1-19':{c:'recesso',t:'Férias antecipadas'},
+'2026-2-4':{c:'letivo',t:'Retorno aulas'},
+'2026-3-3':{c:'feriado',t:'Páscoa'},
+'2026-3-21':{c:'feriado',t:'Tiradentes'},
+'2026-4-1':{c:'feriado',t:'Dia do Trabalho'},
+'2026-5-5':{c:'recesso',t:'Corpus Christi'},
+'2026-5-20':{c:'letivo',t:'Fim 1º Sem.'},
+'2026-6-20':{c:'letivo',t:'Início 2º Sem.'},
+'2026-7-29':{c:'evento',t:'Colação Grau'},
+'2026-8-7':{c:'feriado',t:'Independência'},
+'2026-8-9':{c:'evento',t:'VIII SIMVET'},
+'2026-9-12':{c:'feriado',t:'N.Sra.Aparecida'},
+'2026-10-2':{c:'feriado',t:'Finados'},
+'2026-10-15':{c:'feriado',t:'República'},
+'2026-11-5':{c:'letivo',t:'Fim 2º Sem.'}
+};
+function buildCalendar(){
+var hoje=new Date();
+var container=document.getElementById('calAnual');
+if(!container)return;
+container.innerHTML='';
+for(var m=0;m<12;m++){
+var div=document.createElement('div');
+div.className='cal-month';
+var title=document.createElement('div');
+title.className='cal-month-title';
+title.textContent=MESES[m]+' 2026';
+div.appendChild(title);
+var grid=document.createElement('div');
+grid.className='cal-grid';
+DOWS.forEach(function(d){var s=document.createElement('div');s.className='cal-dow';s.textContent=d;grid.appendChild(s);});
+var firstDay=new Date(2026,m,1).getDay();
+var daysInMonth=new Date(2026,m+1,0).getDate();
+for(var i=0;i<firstDay;i++){var e=document.createElement('div');e.className='cal-day empty';grid.appendChild(e);}
+for(var d=1;d<=daysInMonth;d++){
+var cell=document.createElement('div');
+var key='2026-'+m+'-'+d;
+var isToday=(hoje.getFullYear()===2026&&hoje.getMonth()===m&&hoje.getDate()===d);
+var cls='cal-day';
+var title2='';
+if(ESPECIAIS[key]){cls+=' '+ESPECIAIS[key].c;title2=ESPECIAIS[key].t;}
+if(isToday)cls='cal-day today';
+cell.className=cls;
+cell.textContent=d;
+if(title2)cell.title=title2;
+grid.appendChild(cell);
+}
+div.appendChild(grid);
+container.appendChild(div);
+}
+}
 function showSection(id,btn){
 document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
 document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
@@ -239,29 +316,19 @@ editMode=!editMode;
 var t=document.getElementById('editToggle');
 t.textContent=(editMode?'✎ Modo edição: ON':'✎ Modo edição: OFF');
 t.classList.toggle('on',editMode);
-document.querySelectorAll('.editable').forEach(function(el){el.contentEditable=editMode?'true':'false';});
 }
 function toggleTheme(){
-var h=document.documentElement;
-var dark=h.style.getPropertyValue('--bg')||'dark';
-if(dark!=='light'){
-h.style.setProperty('--bg','light');
-document.body.style.background='#f0f4f8';
-document.body.style.color='#1a202c';
-}else{
-h.style.setProperty('--bg','dark');
-document.body.style.background='#0f1117';
-document.body.style.color='#e2e8f0';
-}
+var b=document.body;
+if(b.style.background==='#f0f4f8'){b.style.background='#0f1117';b.style.color='#e2e8f0';}
+else{b.style.background='#f0f4f8';b.style.color='#1a202c';}
 }
 function addEvento(){
 var titulo=document.getElementById('ev-titulo').value.trim();
 var data=document.getElementById('ev-data').value;
 var disc=document.getElementById('ev-disc').value.trim();
 var tipo=document.getElementById('ev-tipo').value;
-if(!titulo||!data){alert('Preencha o título e a data!');return;}
-var ev={titulo:titulo,data:data,disc:disc,tipo:tipo};
-eventos.push(ev);
+if(!titulo||!data){alert('Preencha título e data!');return;}
+eventos.push({titulo:titulo,data:data,disc:disc,tipo:tipo});
 renderAgenda();
 salvarLocal();
 document.getElementById('ev-titulo').value='';
@@ -270,46 +337,34 @@ document.getElementById('ev-disc').value='';
 }
 function renderAgenda(){
 var lista=document.getElementById('agendaLista');
-if(eventos.length===0){lista.innerHTML='<p style="color:#718096">Nenhum evento cadastrado ainda.</p>';return;}
+if(!lista)return;
+if(eventos.length===0){lista.innerHTML='<p style="color:#718096">Nenhum evento ainda.</p>';return;}
 lista.innerHTML=eventos.map(function(ev,i){
-return '<div class="agenda-item"><div class="agenda-item-info"><h4>'+ev.titulo+'</h4><p>'+ev.data+(ev.disc?' · '+ev.disc:'')+(ev.tipo?' · '+ev.tipo:'')+'</p></div><button class="btn-danger" onclick="removerEvento('+i+')">Remover</button></div>';
+return '<div class="agenda-item"><div><h4>'+ev.titulo+'</h4><p>'+ev.data+(ev.disc?' &middot; '+ev.disc:'')+(ev.tipo?' &middot; '+ev.tipo:'')+'</p></div><button class="btn-danger" onclick="removerEvento('+i+')">Remover</button></div>';
 }).join('');
 }
-function removerEvento(i){
-eventos.splice(i,1);
-renderAgenda();
-salvarLocal();
-}
+function removerEvento(i){eventos.splice(i,1);renderAgenda();salvarLocal();}
 function aplicarEdicao(){
-var titulo=document.getElementById('ed-titulo').value;
-var sub=document.getElementById('ed-sub').value;
-var logo=document.getElementById('ed-logo').value;
-var logosub=document.getElementById('ed-logosub').value;
-document.getElementById('tituloApp').textContent=titulo;
-document.querySelector('.page-sub').textContent=sub;
-document.querySelector('.logo').textContent=logo;
-document.querySelector('.logo-sub').textContent=logosub;
+document.getElementById('tituloApp').textContent=document.getElementById('ed-titulo').value;
+document.getElementById('subApp').textContent=document.getElementById('ed-sub').value;
+document.querySelector('.logo').textContent=document.getElementById('ed-logo').value;
+document.querySelector('.logo-sub').textContent=document.getElementById('ed-logosub').value;
 alert('Alterações aplicadas!');
 }
 function exportarJSON(){
-var data={eventos:eventos,titulo:document.getElementById('tituloApp').textContent};
-var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+var blob=new Blob([JSON.stringify({eventos:eventos},null,2)],{type:'application/json'});
 var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='planner-vet-ifro.json';a.click();
 }
 function importarJSON(e){
-var file=e.target.files[0];if(!file)return;
-var reader=new FileReader();
-reader.onload=function(ev){
-try{var data=JSON.parse(ev.target.result);if(data.eventos)eventos=data.eventos;renderAgenda();alert('Dados importados!');}catch(err){alert('Erro ao importar JSON');}
-};
-reader.readAsText(file);
+var f=e.target.files[0];if(!f)return;
+var r=new FileReader();
+r.onload=function(ev){try{var d=JSON.parse(ev.target.result);if(d.eventos)eventos=d.eventos;renderAgenda();alert('Importado!');}catch(err){alert('Erro ao importar');}};
+r.readAsText(f);
 }
-function salvarLocal(){
-try{localStorage.setItem('planner-vet-eventos',JSON.stringify(eventos));}catch(e){}
-}
+function salvarLocal(){try{localStorage.setItem('pvet-ev',JSON.stringify(eventos));}catch(e){}}
 window.onload=function(){
-try{var saved=localStorage.getItem('planner-vet-eventos');if(saved)eventos=JSON.parse(saved);renderAgenda();}catch(e){}
+buildCalendar();
+try{var s=localStorage.getItem('pvet-ev');if(s)eventos=JSON.parse(s);renderAgenda();}catch(e){}
 };
 </script>
-</body>
-</html>
+</body></html>
