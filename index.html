@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planner Veterinária - IFRO Jaru</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root,[data-theme="light"]{
+      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;
+      --color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;--color-surface-offset:#edeae5;--color-border:#d4d1ca;
+      --color-text:#28251d;--color-text-muted:#66655f;--color-primary:#01696f;--color-primary-hover:#0c4e54;--color-success:#437a22;--color-warning:#964219;
+      --shadow-sm:0 1px 2px oklch(0.2 0.01 80 / 0.06);--shadow-md:0 8px 24px oklch(0.2 0.01 80 / 0.1);
+      --radius-sm:.5rem;--radius-md:.75rem;--radius-lg:1rem;--radius-full:999px;
+      --font-display:'Boska', Georgia, serif;--font-body:'Satoshi', Inter, sans-serif;
+    }
+    [data-theme="dark"]{
+      --color-bg:#171614;--color-surface:#1c1b19;--color-surface-2:#201f1d;--color-surface-offset:#2d2c2a;--color-border:#393836;
+      --color-text:#ece7df;--color-text-muted:#a8a49c;--color-primary:#4f98a3;--color-primary-hover:#227f8b;--color-success:#7db05a;--color-warning:#e0a063;
+      --shadow-sm:0 1px 2px oklch(0 0 0 / .2);--shadow-md:0 12px 30px oklch(0 0 0 / .35);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+    body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;background:var(--color-bg);color:var(--color-text)}
+    button,input,textarea,select{font:inherit;color:inherit}
+    button{cursor:pointer;border:none;background:none}
+    a{color:inherit}
+    .skip-link{position:absolute;left:-9999px;top:auto}.skip-link:focus{left:16px;top:16px;background:var(--color-primary);color:#fff;padding:10px 14px;border-radius:10px;z-index:999}
+    .app-shell{display:grid;grid-template-columns:280px 1fr;min-height:100dvh}
+    .sidebar{background:var(--color-surface);border-right:1px solid color-mix(in oklab,var(--color-text) 12%, transparent);padding:var(--space-6);position:sticky;top:0;height:100dvh;overflow:auto}
+    .brand{display:flex;gap:var(--space-4);align-items:flex-start;margin-bottom:var(--space-8)}
+    .logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--color-primary),color-mix(in oklab,var(--color-primary) 45%, white));display:grid;place-items:center;color:#fff;box-shadow:var(--shadow-md)}
+    .logo svg{width:26px;height:26px}
+    .brand h1{font-family:var(--font-display);font-size:var(--text-xl);line-height:1}
+    .brand p{color:var(--color-text-muted);font-size:var(--text-sm);margin-top:var(--space-2)}
+    .sidebar-actions,.topbar-actions{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+    .nav{display:grid;gap:var(--space-2);margin-top:var(--space-8)}
+    .nav button{width:100%;text-align:left;padding:12px 14px;border-radius:12px;color:var(--color-text-muted);min-height:44px}
+    .nav button.active,.nav button:hover,.nav button:focus-visible{background:color-mix(in oklab,var(--color-primary) 14%, var(--color-surface));color:var(--color-text)}
+    .main{padding:var(--space-6);display:grid;gap:var(--space-6)}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap}
+    .panel,.hero,.table-card,.editor-card{background:var(--color-surface);border:1px solid color-mix(in oklab,var(--color-text) 12%, transparent);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
+    .hero{padding:var(--space-8);display:grid;gap:var(--space-4);background:linear-gradient(135deg,color-mix(in oklab,var(--color-primary) 16%, var(--color-surface)),var(--color-surface))}
+    .hero h2{font-family:var(--font-display);font-size:var(--text-2xl);max-width:12ch;line-height:1.02}
+    .hero p{color:var(--color-text-muted);max-width:70ch}
+    .chips{display:flex;gap:var(--space-2);flex-wrap:wrap}
+    .chip{padding:7px 12px;border-radius:var(--radius-full);background:color-mix(in oklab,var(--color-primary) 12%, var(--color-surface));font-size:var(--text-sm)}
+    .btn{padding:10px 14px;border-radius:12px;min-height:44px;border:1px solid color-mix(in oklab,var(--color-text) 12%, transparent);background:var(--color-surface-2)}
+    .btn-primary{background:var(--color-primary);color:#fff;border-color:transparent}.btn-primary:hover{background:var(--color-primary-hover)}
+    .btn-ghost{background:transparent}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-4)}
+    .stat{padding:var(--space-5);display:grid;gap:var(--space-2)}
+    .stat strong{font-size:var(--text-xl);font-family:var(--font-display)}
+    .muted{color:var(--color-text-muted)}
+    .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--space-6)}
+    .section{display:none;gap:var(--space-6)}.section.active{display:grid}
+    .table-card{padding:var(--space-5);overflow:auto}
+    table{width:100%;border-collapse:collapse;font-size:var(--text-sm)}
+    th,td{padding:12px 10px;border-bottom:1px solid color-mix(in oklab,var(--color-text) 10%, transparent);vertical-align:top;text-align:left}
+    th{color:var(--color-text-muted);font-weight:700}
+    .editor-card{padding:var(--space-5);display:grid;gap:var(--space-4)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
+    .field{display:grid;gap:var(--space-2)}
+    .field label{font-size:var(--text-sm);font-weight:700}
+    .field input,.field textarea,.field select{background:var(--color-surface-2);border:1px solid color-mix(in oklab,var(--color-text) 12%, transparent);border-radius:12px;padding:12px 14px;min-height:44px}
+    .field textarea{min-height:110px;resize:vertical}
+    .list{display:grid;gap:var(--space-3)}
+    .list-item{padding:14px;border-radius:14px;background:var(--color-surface-2);border:1px solid color-mix(in oklab,var(--color-text) 10%, transparent)}
+    .tag{display:inline-flex;padding:5px 10px;border-radius:999px;font-size:var(--text-xs);background:color-mix(in oklab,var(--color-primary) 12%, var(--color-surface));margin-bottom:8px}
+    .toolbar{display:flex;gap:var(--space-3);flex-wrap:wrap}
+    .hidden{display:none !important}
+    @media (max-width: 980px){.app-shell{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.grid-2,.form-grid{grid-template-columns:1fr}.hero h2{max-width:none}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Menu lateral">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c3.5 0 6 2.2 6 5.3 0 2.7-1.9 4.7-4.7 5.2V18a1.3 1.3 0 0 1-2.6 0v-4.5C7.9 13 6 11 6 8.3 6 5.2 8.5 3 12 3Z"/>
+            <path d="M8 20h8"/>
+          </svg>
+        </div>
+        <div>
+          <h1 id="plannerTitle">Planner Vet IFRO</h1>
+          <p id="plannerSubtitle">Campus Jaru · Medicina Veterinária · 2026</p>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <button class="btn btn-primary" id="toggleEditBtn" type="button">Modo edição: desativado</button>
+        <button class="btn" id="themeBtn" type="button" aria-label="Alternar tema">Tema</button>
+      </div>
+      <nav class="nav" aria-label="Seções">
+        <button class="active" data-target="dashboard" type="button">Dashboard</button>
+        <button data-target="calendario" type="button">Calendário 2026</button>
+        <button data-target="grade" type="button">Grade do 5º período</button>
+        <button data-target="disciplinas" type="button">Disciplinas</button>
+        <button data-target="editor" type="button">Editar conteúdo</button>
+      </nav>
+    </aside>
+
+    <main class="main" id="conteudo">
+      <div class="topbar">
+        <div>
+          <p class="muted">Planner acadêmico editável</p>
+          <h2 style="font-family:var(--font-display);font-size:var(--text-xl);">Medicina Veterinária · IFRO Jaru</h2>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn" id="exportBtn" type="button">Exportar JSON</button>
+          <button class="btn" id="importBtn" type="button">Importar JSON</button>
+          <input id="importFile" type="file" accept="application/json" class="hidden" />
+        </div>
+      </div>
+
+      <section id="dashboard" class="section active" aria-labelledby="titulo-dashboard">
+        <div class="hero">
+          <span class="tag">Personalizável</span>
+          <h2 id="titulo-dashboard">Seu planner da Veterinária, agora totalmente editável.</h2>
+          <p id="heroText">Você pode alterar título, subtítulo, eventos, disciplinas, horários e observações pelo painel “Editar conteúdo”. Os dados iniciais abaixo já foram preenchidos com base nas informações acadêmicas enviadas.</p>
+          <div class="chips" id="heroChips"></div>
+        </div>
+        <div class="stats" id="statsGrid"></div>
+        <div class="grid-2">
+          <article class="panel table-card">
+            <h3 style="margin-bottom:12px;">Próximas datas importantes</h3>
+            <div id="eventosResumo" class="list"></div>
+          </article>
+          <article class="panel table-card">
+            <h3 style="margin-bottom:12px;">Resumo da grade</h3>
+            <div id="disciplinasResumo" class="list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="calendario" class="section" aria-labelledby="titulo-calendario">
+        <article class="table-card">
+          <h3 id="titulo-calendario" 
